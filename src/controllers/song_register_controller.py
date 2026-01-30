@@ -15,7 +15,11 @@ class SongRegisterController:
         if len(new_song_informations["title"]) > 100:
             raise Exception("Título de música com mais de 100 caracteres")
         
-        year = int(new_song_informations["year"])
+        try:
+            year = int(new_song_informations["year"])
+        except ValueError:
+            raise Exception("Ano da música deve conter apenas números")
+        
         if year >=2027:
             raise Exception("Ano de musica inválido!")
 
